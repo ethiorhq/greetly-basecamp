@@ -1,51 +1,63 @@
-# Services Section — "What I Do"
+# Final CTA + Contact Form Section
 
-Add a new section below the hero on `/` presenting Arsalan's three services as premium dark cards.
+Add the closing section of the page — bold call-to-action headline and a dark-themed contact form. On submit, the form opens WhatsApp with the visitor's name, email, and message prefilled (same number as the hero CTA). No backend needed.
 
 ## Placement
 
-- In `src/routes/index.tsx`, append a `<section id="services">` after the closing hero `</section>` inside the same `<main>`.
-- Section has its own vertical breathing room (`py-24 sm:py-32`) and stays within the existing `max-w-7xl` container.
+- Append `<ContactSection />` at the end of `<main>` in `src/routes/index.tsx`, after `<AboutSection />`.
+- Section id `contact` so the hero CTA can later anchor here if desired.
+- Wrapper: `mx-auto max-w-4xl px-6 py-24 sm:py-32`.
 
 ## Header
 
-- Small yellow eyebrow: `SERVICES` (uppercase, tracked, `text-primary`, with the same short yellow rule motif as the hero for consistency).
-- Centered H2 in the display font: `What I Do` — `text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight`.
-- Optional single-line supporting sentence in `text-muted-foreground` under the H2 to tie the three services together (e.g. "Three focused services. One goal — more visibility, more leads.").
+- Yellow eyebrow with rule motif (consistent with Services/About): `CONTACT`.
+- H2 centered: `Ready to Grow Your Business Online?` — display font, `text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight`.
+- Short supporting line under it: `Tell me about your business. I'll reply on WhatsApp.` (muted).
 
-## The three cards
+## Form (client-only, no backend)
 
-Grid: `grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8`, `mt-16`.
+Form fields, stacked, `max-w-2xl mx-auto mt-12`:
 
-Each card:
-- Element: `<article>` for semantics.
-- Background: `bg-card` (already defined, slightly lighter than page bg via the existing `--card` token).
-- Border: 1px `border-border` at rest; on hover the top edge / full border shifts to `border-primary/60` with a soft yellow glow (`shadow-[0_20px_60px_-20px_var(--color-primary)]`) and a `-translate-y-1` lift. Transition ~300ms.
-- Padding: `p-8`, rounded `rounded-2xl`.
-- Icon on top: 48px lucide icon inside a rounded square badge (`h-14 w-14 rounded-xl bg-primary/10 border border-primary/30`), icon color `text-primary`.
-  - SEO → `TrendingUp`
-  - Local SEO → `MapPin`
-  - Social Media Marketing → `Share2` (fallback: `Instagram`)
-- Service name: `h3`, display font, `text-xl font-semibold`, `mt-6`.
-- Description (one sentence, tuned to this specialist's focus):
-  - **SEO** — "Rank higher on Google with technical fixes, keyword strategy, and content that pulls in the right traffic."
-  - **Local SEO** — "Optimize your Google Business Profile so nearby customers find you first when they're ready to buy."
-  - **Social Media Marketing** — "Build a magnetic brand presence with strategy, content, and engagement that turns followers into leads."
-- Description styling: `mt-3 text-sm sm:text-base leading-relaxed text-muted-foreground`.
+1. **Name** — `<input type="text">`, required, 2–80 chars.
+2. **Email** — `<input type="email">`, required, valid email, max 120 chars.
+3. **Message** — `<textarea>`, required, 10–800 chars, 5 rows.
 
-## Accessibility & motion
+Each field:
+- Label above input, `text-xs uppercase tracking-[0.25em] text-muted-foreground`.
+- Input styling: `w-full rounded-lg bg-card border border-border px-4 py-3 text-foreground placeholder:text-muted-foreground/60`.
+- Focus: `focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/30 focus:shadow-[0_0_30px_-8px_var(--color-primary)]` for the yellow glow.
+- `transition-all duration-200`.
 
-- Hover state also present on `:focus-visible` for keyboard users (same lift + border-primary).
-- `transition-all duration-300 ease-out` on the card; icon badge gets a subtle `group-hover:bg-primary/20` shift.
+Submit button:
+- Full-width on mobile, auto width on `sm:`, aligned right.
+- Same neon-yellow style as the hero `Let's Talk` button (`bg-primary`, `text-primary-foreground`, rounded-full, uppercase, tracked, arrow icon, hover glow + scale).
+- Label: `Send Message`.
 
-## Responsive
+## Validation (client-side, zod)
 
-- Mobile: single column stack, gap-6.
-- Tablet+ (`md:`): 3 columns of equal width.
-- Header stays centered at every breakpoint.
+- Add `zod` schema in the same file with rules above.
+- On submit: `preventDefault()`, parse with zod, show inline error messages under each field (`text-xs text-destructive mt-1`) if invalid.
+- No console logging of form values.
+
+## Submit behavior
+
+On valid submit:
+1. Build message text: `Hi Arsalan, I'm {name} ({email}).\n\n{message}`.
+2. URL-encode via `encodeURIComponent`.
+3. Open `https://api.whatsapp.com/send/?phone=923118099156&text={encoded}&type=phone_number&app_absent=0` in a new tab (`window.open(url, "_blank", "noopener,noreferrer")`).
+4. Reset the form and show a small yellow-accented success line: `Opening WhatsApp…` (auto-clears after ~4s).
+
+Phone number is extracted to a module-level constant (`WHATSAPP_PHONE = "923118099156"`) shared with the hero CTA to avoid drift; hero CTA URL rebuilt from the same constant.
+
+## Accessibility
+
+- Every input has an associated `<label htmlFor>`.
+- Error messages linked via `aria-describedby`.
+- Invalid inputs get `aria-invalid="true"`.
 
 ## Files touched
 
-1. `src/routes/index.tsx` — add the services section markup and import 3 lucide icons (`TrendingUp`, `MapPin`, `Share2`) alongside the existing `ArrowRight`.
+1. `src/routes/index.tsx` — add `ContactSection` component + zod schema + shared WhatsApp constant. Extract `WHATSAPP_URL` builder to reuse in the hero button.
+2. `package.json` — `zod` is already installed with shadcn/react-hook-form scaffolding; verify with `bun pm ls zod`. If missing, `bun add zod`.
 
-No new tokens, no CSS changes — everything reuses `bg-card`, `border-border`, `text-primary`, `text-muted-foreground` already defined in `src/styles.css`.
+No CSS token changes. No new files.
