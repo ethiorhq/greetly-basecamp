@@ -40,6 +40,7 @@ export const Route = createFileRoute("/")({
 function Index() {
   return (
     <main className="relative min-h-screen overflow-hidden bg-background text-foreground">
+      <SiteNav />
       {/* Ambient vignette + grid glow */}
       <div
         aria-hidden
