@@ -1,9 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { ArrowRight, TrendingUp, MapPin, Share2, type LucideIcon } from "lucide-react";
+import { ArrowRight, TrendingUp, MapPin, Share2, Send, type LucideIcon } from "lucide-react";
+import { useState } from "react";
+import { z } from "zod";
 import portraitAsset from "@/assets/arsalan-portrait.png.asset.json";
 
-const WHATSAPP_URL =
-  "https://api.whatsapp.com/send/?phone=923118099156&text&type=phone_number&app_absent=0";
+const WHATSAPP_PHONE = "923118099156";
+const WHATSAPP_URL = `https://api.whatsapp.com/send/?phone=${WHATSAPP_PHONE}&text&type=phone_number&app_absent=0`;
 
 export const Route = createFileRoute("/")({
   component: Index,
