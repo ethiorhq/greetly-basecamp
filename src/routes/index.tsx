@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { ArrowRight, TrendingUp, MapPin, Share2, Send, type LucideIcon } from "lucide-react";
+import { ArrowRight, TrendingUp, MapPin, Share2, Send, Linkedin, Instagram, type LucideIcon } from "lucide-react";
 import { useState } from "react";
 import { z } from "zod";
 import portraitAsset from "@/assets/arsalan-portrait.png.asset.json";
@@ -126,7 +126,56 @@ function Index() {
       <AboutSection />
 
       <ContactSection />
+
+      <SiteFooter />
     </main>
+  );
+}
+
+function SiteFooter() {
+  const year = new Date().getFullYear();
+  const socials = [
+    { name: "LinkedIn", href: "#", Icon: Linkedin },
+    { name: "Instagram", href: "#", Icon: Instagram },
+  ];
+
+  return (
+    <footer className="relative border-t border-border/60 bg-background">
+      <div className="mx-auto flex max-w-7xl flex-col gap-8 px-6 py-12 sm:px-8 lg:px-12 lg:flex-row lg:items-center lg:justify-between">
+        <div>
+          <p
+            style={{ fontFamily: "var(--font-display)" }}
+            className="text-lg font-semibold text-foreground"
+          >
+            Arsalan Khattak
+          </p>
+          <p className="mt-1 text-sm text-muted-foreground">
+            Digital Marketing Specialist — SEO, Local SEO & Social Media.
+          </p>
+        </div>
+
+        <nav aria-label="Social links" className="flex items-center gap-3">
+          {socials.map(({ name, href, Icon }) => (
+            <a
+              key={name}
+              href={href}
+              aria-label={name}
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-border text-muted-foreground transition-colors duration-200 hover:border-primary/60 hover:text-primary focus:outline-none focus-visible:border-primary/60 focus-visible:text-primary"
+            >
+              <Icon className="h-4 w-4" strokeWidth={2} />
+            </a>
+          ))}
+        </nav>
+      </div>
+
+      <div className="border-t border-border/40">
+        <div className="mx-auto max-w-7xl px-6 py-5 sm:px-8 lg:px-12">
+          <p className="text-xs text-muted-foreground">
+            © {year} Arsalan Khattak. All rights reserved.
+          </p>
+        </div>
+      </div>
+    </footer>
   );
 }
 
