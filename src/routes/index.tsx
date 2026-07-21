@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, TrendingUp, MapPin, Share2, type LucideIcon } from "lucide-react";
 import portraitAsset from "@/assets/arsalan-portrait.png.asset.json";
 
 const WHATSAPP_URL =
@@ -118,6 +118,90 @@ function Index() {
           </div>
         </div>
       </section>
+
+      <ServicesSection />
     </main>
+  );
+}
+
+type Service = {
+  icon: LucideIcon;
+  name: string;
+  description: string;
+};
+
+const SERVICES: Service[] = [
+  {
+    icon: TrendingUp,
+    name: "SEO",
+    description:
+      "Rank higher on Google with technical fixes, keyword strategy, and content that pulls in the right traffic.",
+  },
+  {
+    icon: MapPin,
+    name: "Local SEO",
+    description:
+      "Optimize your Google Business Profile so nearby customers find you first when they're ready to buy.",
+  },
+  {
+    icon: Share2,
+    name: "Social Media Marketing",
+    description:
+      "Build a magnetic brand presence with strategy, content, and engagement that turns followers into leads.",
+  },
+];
+
+function ServicesSection() {
+  return (
+    <section
+      id="services"
+      className="relative mx-auto max-w-7xl px-6 py-24 sm:px-8 sm:py-32 lg:px-12"
+    >
+      <div className="mx-auto flex max-w-2xl flex-col items-center text-center">
+        <div className="flex items-center gap-3">
+          <span aria-hidden className="h-px w-10 bg-primary" />
+          <p className="font-sans text-xs font-medium uppercase tracking-[0.35em] text-primary">
+            Services
+          </p>
+          <span aria-hidden className="h-px w-10 bg-primary" />
+        </div>
+
+        <h2
+          style={{ fontFamily: "var(--font-display)" }}
+          className="mt-6 text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl"
+        >
+          What I Do
+        </h2>
+
+        <p className="mt-5 text-base leading-relaxed text-muted-foreground sm:text-lg">
+          Three focused services. One goal — more visibility, more leads.
+        </p>
+      </div>
+
+      <div className="mt-16 grid grid-cols-1 gap-6 md:grid-cols-3 lg:gap-8">
+        {SERVICES.map(({ icon: Icon, name, description }) => (
+          <article
+            key={name}
+            tabIndex={0}
+            className="group relative flex flex-col rounded-2xl border border-border bg-card p-8 transition-all duration-300 ease-out hover:-translate-y-1 hover:border-primary/60 hover:shadow-[0_20px_60px_-20px_var(--color-primary)] focus:outline-none focus-visible:-translate-y-1 focus-visible:border-primary/60 focus-visible:shadow-[0_20px_60px_-20px_var(--color-primary)]"
+          >
+            <div className="flex h-14 w-14 items-center justify-center rounded-xl border border-primary/30 bg-primary/10 transition-colors duration-300 group-hover:bg-primary/20 group-focus-visible:bg-primary/20">
+              <Icon className="h-6 w-6 text-primary" strokeWidth={2} />
+            </div>
+
+            <h3
+              style={{ fontFamily: "var(--font-display)" }}
+              className="mt-6 text-xl font-semibold text-foreground"
+            >
+              {name}
+            </h3>
+
+            <p className="mt-3 text-sm leading-relaxed text-muted-foreground sm:text-base">
+              {description}
+            </p>
+          </article>
+        ))}
+      </div>
+    </section>
   );
 }

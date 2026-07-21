@@ -1,63 +1,51 @@
-# Hero Section — Arsalan Khattak
+# Services Section — "What I Do"
 
-A single, premium dark hero on `/` (replacing the placeholder), split layout on desktop (text left / portrait right), stacked on mobile (portrait above text).
+Add a new section below the hero on `/` presenting Arsalan's three services as premium dark cards.
 
-## Design tokens (src/styles.css)
+## Placement
 
-Add dark brand tokens so we never hardcode colors in JSX:
-- `--background: oklch(0.05 0 0)` → near-black `#0A0A0A`
-- `--foreground: oklch(0.97 0.01 95)` → warm off-white `#F5F5F0`
-- `--muted-foreground: oklch(0.62 0 0)` → `#8A8A8A`
-- `--primary: oklch(0.96 0.24 115)` → neon/acid yellow `#E8FF00`
-- `--primary-foreground: oklch(0.05 0 0)` → black text on yellow
-- Force dark by default on `:root` (this is a dark-only marketing site).
+- In `src/routes/index.tsx`, append a `<section id="services">` after the closing hero `</section>` inside the same `<main>`.
+- Section has its own vertical breathing room (`py-24 sm:py-32`) and stays within the existing `max-w-7xl` container.
 
-## Layout (src/routes/index.tsx)
+## Header
 
-Full-viewport section, `min-h-screen`, near-black bg, generous padding.
+- Small yellow eyebrow: `SERVICES` (uppercase, tracked, `text-primary`, with the same short yellow rule motif as the hero for consistency).
+- Centered H2 in the display font: `What I Do` — `text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight`.
+- Optional single-line supporting sentence in `text-muted-foreground` under the H2 to tie the three services together (e.g. "Three focused services. One goal — more visibility, more leads.").
 
-```
-Desktop (lg+):  [ text 6/12 ] [ portrait 6/12 ]
-Mobile:         [ portrait ]
-                [ text     ]
-```
+## The three cards
 
-Grid: `grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center`.
-Portrait column uses `order-first lg:order-last` for the mobile stack requirement.
+Grid: `grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8`, `mt-16`.
 
-## Content
+Each card:
+- Element: `<article>` for semantics.
+- Background: `bg-card` (already defined, slightly lighter than page bg via the existing `--card` token).
+- Border: 1px `border-border` at rest; on hover the top edge / full border shifts to `border-primary/60` with a soft yellow glow (`shadow-[0_20px_60px_-20px_var(--color-primary)]`) and a `-translate-y-1` lift. Transition ~300ms.
+- Padding: `p-8`, rounded `rounded-2xl`.
+- Icon on top: 48px lucide icon inside a rounded square badge (`h-14 w-14 rounded-xl bg-primary/10 border border-primary/30`), icon color `text-primary`.
+  - SEO → `TrendingUp`
+  - Local SEO → `MapPin`
+  - Social Media Marketing → `Share2` (fallback: `Instagram`)
+- Service name: `h3`, display font, `text-xl font-semibold`, `mt-6`.
+- Description (one sentence, tuned to this specialist's focus):
+  - **SEO** — "Rank higher on Google with technical fixes, keyword strategy, and content that pulls in the right traffic."
+  - **Local SEO** — "Optimize your Google Business Profile so nearby customers find you first when they're ready to buy."
+  - **Social Media Marketing** — "Build a magnetic brand presence with strategy, content, and engagement that turns followers into leads."
+- Description styling: `mt-3 text-sm sm:text-base leading-relaxed text-muted-foreground`.
 
-- Eyebrow: `Arsalan Khattak` — small, tracked-out uppercase, `text-muted-foreground`, with a short yellow rule before it.
-- H1: `Digital Marketing Specialist` — huge (`text-5xl sm:text-6xl lg:text-7xl`), tight leading, `font-bold`, off-white. The word "Specialist" (or "Marketing") gets `text-primary` for accent — one word only to keep it premium.
-- Subtext: the provided sentence, `text-lg text-muted-foreground max-w-xl`.
-- CTA: `Let's Talk` — anchor `<a>` (external), `bg-primary text-primary-foreground`, rounded-full, bold, arrow icon (lucide `ArrowRight`). Hover = brighter glow via `shadow-[0_0_40px_-5px_var(--primary)]` and slight scale. Opens `https://api.whatsapp.com/send/?phone=923118099156&text&type=phone_number&app_absent=0` in a new tab (`target="_blank" rel="noopener noreferrer"`).
+## Accessibility & motion
 
-## Portrait treatment
+- Hover state also present on `:focus-visible` for keyboard users (same lift + border-primary).
+- `transition-all duration-300 ease-out` on the card; icon badge gets a subtle `group-hover:bg-primary/20` shift.
 
-- User will upload a transparent-PNG cutout. Placeholder plan:
-  - Import path: `src/assets/arsalan-portrait.png` (referenced via `.asset.json` pointer once uploaded — I'll wire the import now with a TODO if the file isn't in yet, or wait for the upload before finalizing).
-  - Rendered as a plain `<img>`, **no card / no border / no bg**.
-  - Behind it, an absolutely-positioned yellow radial glow div sits at shoulder height: `bg-[radial-gradient(ellipse_at_center,var(--primary)/25%,transparent_70%)] blur-3xl`.
-  - Image sits above the glow with `relative z-10`, sized `max-h-[80vh] w-auto mx-auto`.
+## Responsive
 
-## Ambient polish
-
-- Very subtle vignette/grain overlay on the section (radial dark gradient) to add cinematic depth without clutter.
-- No nav, no other sections this pass (per your answer).
-
-## SEO / head
-
-Update `src/routes/index.tsx` `Route` with a `head()`:
-- Title: `Arsalan Khattak — Digital Marketing Specialist`
-- Description: the subtext line (trimmed <160 chars).
-- og:title / og:description / og:type=website / twitter:card=summary_large_image.
+- Mobile: single column stack, gap-6.
+- Tablet+ (`md:`): 3 columns of equal width.
+- Header stays centered at every breakpoint.
 
 ## Files touched
 
-1. `src/styles.css` — add dark brand tokens, default-dark `:root`.
-2. `src/routes/index.tsx` — replace placeholder with the hero + head metadata.
-3. `src/assets/arsalan-portrait.png` — added after you attach the cutout; imported via Lovable Assets pointer.
+1. `src/routes/index.tsx` — add the services section markup and import 3 lucide icons (`TrendingUp`, `MapPin`, `Share2`) alongside the existing `ArrowRight`.
 
-## Open item
-
-I still need the transparent portrait PNG attached to this chat before I can drop it into the hero. Once you send it I'll upload it as a CDN asset and wire the import in the same build step.
+No new tokens, no CSS changes — everything reuses `bg-card`, `border-border`, `text-primary`, `text-muted-foreground` already defined in `src/styles.css`.
