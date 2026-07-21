@@ -10,31 +10,28 @@ const WHATSAPP_URL = `https://api.whatsapp.com/send/?phone=${WHATSAPP_PHONE}&tex
 
 export const Route = createFileRoute("/")({
   component: Index,
-  head: () => ({
-    meta: [
-      { title: "Arsalan Khattak — Digital Marketing Specialist" },
-      {
-        name: "description",
-        content:
-          "Arsalan Khattak helps businesses grow online and generate more leads through SEO, Local SEO, and Social Media Marketing.",
-      },
-      { property: "og:title", content: "Arsalan Khattak — Digital Marketing Specialist" },
-      {
-        property: "og:description",
-        content:
-          "SEO, Local SEO, and Social Media Marketing that grow your online presence and generate real leads.",
-      },
-      { property: "og:type", content: "website" },
-      { property: "og:url", content: "/" },
-      { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Arsalan Khattak — Digital Marketing Specialist" },
-      {
-        name: "twitter:description",
-        content:
-          "SEO, Local SEO, and Social Media Marketing that grow your online presence and generate real leads.",
-      },
-    ],
-  }),
+  head: () => {
+    const description =
+      "My goal is to help businesses attract the right audience, build trust, and achieve long-term growth through proven digital marketing solutions.";
+    const title = "Arsalan Khattak | Digital Marketing Specialist";
+    return {
+      meta: [
+        { title },
+        { name: "description", content: description },
+        { property: "og:title", content: title },
+        { property: "og:description", content: description },
+        { property: "og:type", content: "website" },
+        { property: "og:url", content: "/" },
+        { property: "og:image", content: portraitAsset.url },
+        { property: "og:image:alt", content: "Arsalan Khattak — Digital Marketing Specialist" },
+        { name: "twitter:card", content: "summary_large_image" },
+        { name: "twitter:title", content: title },
+        { name: "twitter:description", content: description },
+        { name: "twitter:image", content: portraitAsset.url },
+      ],
+      links: [{ rel: "canonical", href: "/" }],
+    };
+  },
 });
 
 function Index() {
