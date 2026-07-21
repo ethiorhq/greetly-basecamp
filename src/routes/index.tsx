@@ -125,6 +125,8 @@ function Index() {
 
       <ServicesSection />
 
+      <ResultsSection />
+
       <AboutSection />
 
       <ContactSection />
