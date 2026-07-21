@@ -247,7 +247,7 @@ function ContactSection() {
   return (
     <section
       id="contact"
-      className="relative mx-auto max-w-4xl px-6 py-24 sm:px-8 sm:py-32 lg:px-12"
+      className="relative mx-auto max-w-4xl px-6 py-14 sm:px-8 sm:py-24 lg:px-12"
     >
       <div className="mx-auto flex max-w-3xl flex-col items-center text-center">
         <div className="flex items-center gap-3">
@@ -375,7 +375,7 @@ function AboutSection() {
   return (
     <section
       id="about"
-      className="relative mx-auto max-w-7xl px-6 py-24 sm:px-8 sm:py-32 lg:px-12"
+      className="relative mx-auto max-w-7xl px-6 py-14 sm:px-8 sm:py-24 lg:px-12"
     >
       <div className="mx-auto flex max-w-3xl flex-col items-center text-center">
         <div className="flex items-center gap-3">
@@ -450,7 +450,7 @@ function ServicesSection() {
   return (
     <section
       id="services"
-      className="relative mx-auto max-w-7xl px-6 py-24 sm:px-8 sm:py-32 lg:px-12"
+      className="relative mx-auto max-w-7xl px-6 py-14 sm:px-8 sm:py-24 lg:px-12"
     >
       <div className="mx-auto flex max-w-2xl flex-col items-center text-center">
         <div className="flex items-center gap-3">
