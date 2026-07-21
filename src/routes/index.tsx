@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, TrendingUp, MapPin, Share2, type LucideIcon } from "lucide-react";
 import portraitAsset from "@/assets/arsalan-portrait.png.asset.json";
 
 const WHATSAPP_URL =
