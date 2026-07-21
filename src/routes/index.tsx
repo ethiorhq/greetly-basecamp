@@ -125,6 +125,8 @@ function Index() {
 
       <ServicesSection />
 
+      <ResultsSection />
+
       <AboutSection />
 
       <ContactSection />
@@ -495,6 +497,98 @@ function ServicesSection() {
               {description}
             </p>
           </article>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+type Result = {
+  metric: string;
+  headline: string;
+  quote: string;
+  attribution: string;
+};
+
+const RESULTS: Result[] = [
+  {
+    metric: "#1",
+    headline: "Ranked #1 for target keyword in 3 months",
+    quote:
+      "Arsalan rebuilt our on-page SEO and content plan — we went from page 3 to the top spot and inquiries doubled.",
+    attribution: "Local Service Business",
+  },
+  {
+    metric: "3x",
+    headline: "3x more calls from Google Business Profile",
+    quote:
+      "Our GBP was invisible. After his local SEO work, we're the first result in the map pack and calls tripled.",
+    attribution: "Multi-location Retailer",
+  },
+  {
+    metric: "+180%",
+    headline: "180% social engagement lift in 90 days",
+    quote:
+      "Strategy, content, and consistency — our Instagram finally feels like a brand and it's actually driving leads.",
+    attribution: "D2C Brand Founder",
+  },
+];
+
+function ResultsSection() {
+  return (
+    <section
+      id="results"
+      className="relative mx-auto max-w-7xl px-6 py-14 sm:px-8 sm:py-24 lg:px-12"
+    >
+      <div className="mx-auto flex max-w-2xl flex-col items-center text-center">
+        <div className="flex items-center gap-3">
+          <span aria-hidden className="h-px w-10 bg-primary" />
+          <p className="font-sans text-xs font-medium uppercase tracking-[0.35em] text-primary">
+            Results
+          </p>
+          <span aria-hidden className="h-px w-10 bg-primary" />
+        </div>
+
+        <h2
+          style={{ fontFamily: "var(--font-display)" }}
+          className="mt-6 text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl"
+        >
+          Real Growth, <span className="text-primary">Measured.</span>
+        </h2>
+
+        <p className="mt-5 text-base leading-relaxed text-muted-foreground sm:text-lg">
+          A few recent wins from businesses I've worked with.
+        </p>
+      </div>
+
+      <div className="mt-16 grid grid-cols-1 gap-6 md:grid-cols-3 lg:gap-8">
+        {RESULTS.map(({ metric, headline, quote, attribution }) => (
+          <figure
+            key={headline}
+            className="group relative flex flex-col rounded-2xl border border-border bg-card p-8 transition-all duration-300 ease-out hover:-translate-y-1 hover:border-primary/60 hover:shadow-[0_20px_60px_-20px_var(--color-primary)]"
+          >
+            <div
+              style={{ fontFamily: "var(--font-display)" }}
+              className="text-5xl font-bold leading-none tracking-tight text-primary sm:text-6xl"
+            >
+              {metric}
+            </div>
+
+            <figcaption
+              style={{ fontFamily: "var(--font-display)" }}
+              className="mt-5 text-lg font-semibold leading-snug text-foreground"
+            >
+              {headline}
+            </figcaption>
+
+            <blockquote className="mt-4 text-sm leading-relaxed text-muted-foreground sm:text-base">
+              &ldquo;{quote}&rdquo;
+            </blockquote>
+
+            <p className="mt-6 text-xs font-medium uppercase tracking-[0.25em] text-muted-foreground">
+              — {attribution}
+            </p>
+          </figure>
         ))}
       </div>
     </section>
