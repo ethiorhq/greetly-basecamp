@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { ArrowRight, TrendingUp, MapPin, Share2, Send, Linkedin, Instagram, type LucideIcon } from "lucide-react";
+import { ArrowRight, TrendingUp, MapPin, Share2, Send, Linkedin, Instagram, Facebook, MessageCircle, type LucideIcon } from "lucide-react";
 import { useState } from "react";
 import { z } from "zod";
 import portraitAsset from "@/assets/arsalan-portrait.png.asset.json";
@@ -139,8 +139,10 @@ function Index() {
 function SiteFooter() {
   const year = new Date().getFullYear();
   const socials = [
-    { name: "LinkedIn", href: "#", Icon: Linkedin },
+    { name: "LinkedIn", href: "https://www.linkedin.com/in/arsalan-local-seo-specialist/", Icon: Linkedin },
+    { name: "Facebook", href: "https://www.facebook.com/arsalankhattaks", Icon: Facebook },
     { name: "Instagram", href: "#", Icon: Instagram },
+    { name: "WhatsApp", href: WHATSAPP_URL, Icon: MessageCircle },
   ];
 
   return (
@@ -163,6 +165,8 @@ function SiteFooter() {
             <a
               key={name}
               href={href}
+              target="_blank"
+              rel="noopener noreferrer"
               aria-label={name}
               className="flex h-10 w-10 items-center justify-center rounded-full border border-border text-muted-foreground transition-colors duration-200 hover:border-primary/60 hover:text-primary focus:outline-none focus-visible:border-primary/60 focus-visible:text-primary"
             >
