@@ -120,7 +120,63 @@ function Index() {
       </section>
 
       <ServicesSection />
+
+      <AboutSection />
     </main>
+  );
+}
+
+const STATS: { value: string; label: string }[] = [
+  { value: "150+", label: "Rankings Improved" },
+  { value: "3x", label: "Local Visibility Growth" },
+  { value: "80%", label: "Avg. Engagement Lift" },
+];
+
+function AboutSection() {
+  return (
+    <section
+      id="about"
+      className="relative mx-auto max-w-7xl px-6 py-24 sm:px-8 sm:py-32 lg:px-12"
+    >
+      <div className="mx-auto flex max-w-3xl flex-col items-center text-center">
+        <div className="flex items-center gap-3">
+          <span aria-hidden className="h-px w-10 bg-primary" />
+          <p className="font-sans text-xs font-medium uppercase tracking-[0.35em] text-primary">
+            About
+          </p>
+          <span aria-hidden className="h-px w-10 bg-primary" />
+        </div>
+
+        <h2
+          style={{ fontFamily: "var(--font-display)" }}
+          className="mt-6 text-3xl font-bold leading-tight tracking-tight text-foreground sm:text-4xl lg:text-5xl"
+        >
+          My goal is to help businesses attract the right audience,
+          build trust, and achieve{" "}
+          <span className="text-primary">long-term growth</span> through
+          proven digital marketing solutions.
+        </h2>
+      </div>
+
+      <div className="mx-auto mt-16 grid max-w-4xl grid-cols-1 gap-10 sm:grid-cols-3 sm:gap-6">
+        {STATS.map(({ value, label }) => (
+          <div
+            key={label}
+            className="flex flex-col items-center text-center"
+          >
+            <div
+              style={{ fontFamily: "var(--font-display)" }}
+              className="text-5xl font-bold leading-none tracking-tight text-primary sm:text-6xl lg:text-7xl"
+            >
+              {value}
+            </div>
+            <p className="mt-3 text-xs font-medium uppercase tracking-[0.25em] text-muted-foreground">
+              {label}
+            </p>
+          </div>
+        ))}
+      </div>
+    </section>
   );
 }
 
