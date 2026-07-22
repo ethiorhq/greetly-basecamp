@@ -134,7 +134,7 @@ function Index() {
 }
 
 function SiteFooter() {
-  const year = new Date().getFullYear();
+  
   const socials = [
     { name: "LinkedIn", href: "https://www.linkedin.com/in/arsalan-local-seo-specialist/", Icon: Linkedin },
     { name: "Facebook", href: "https://www.facebook.com/arsalankhattaks", Icon: Facebook },
