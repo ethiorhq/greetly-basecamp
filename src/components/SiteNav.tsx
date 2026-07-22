@@ -71,16 +71,28 @@ export function SiteNav() {
           </a>
 
           <nav className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-8 md:flex">
-            {LINKS.map((l) => (
-              <a
-                key={l.href}
-                href={l.href}
-                onClick={(e) => handleNavClick(e, l.href)}
-                className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground transition-colors duration-200 hover:text-primary"
-              >
-                {l.label}
-              </a>
-            ))}
+            {LINKS.map((l) =>
+              l.external ? (
+                <a
+                  key={l.href}
+                  href={l.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground transition-colors duration-200 hover:text-primary"
+                >
+                  {l.label}
+                </a>
+              ) : (
+                <a
+                  key={l.href}
+                  href={l.href}
+                  onClick={(e) => handleNavClick(e, l.href)}
+                  className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground transition-colors duration-200 hover:text-primary"
+                >
+                  {l.label}
+                </a>
+              ),
+            )}
           </nav>
 
           <div className="flex items-center gap-2">
