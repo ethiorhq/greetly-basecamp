@@ -7,7 +7,11 @@ const WHATSAPP_URL =
 const LINKS = [
   { href: "#services", label: "Services" },
   { href: "#about", label: "About" },
-  { href: "#portfolio", label: "Portfolio" },
+  {
+    href: "https://portfolio.arsalankhattak.com",
+    label: "Portfolio",
+    external: true,
+  },
   { href: "#contact", label: "Contact" },
 ];
 
