@@ -7,7 +7,11 @@ const WHATSAPP_URL =
 const LINKS = [
   { href: "#services", label: "Services" },
   { href: "#about", label: "About" },
-  { href: "#portfolio", label: "Portfolio" },
+  {
+    href: "https://portfolio.arsalankhattak.com",
+    label: "Portfolio",
+    external: true,
+  },
   { href: "#contact", label: "Contact" },
 ];
 
@@ -67,16 +71,28 @@ export function SiteNav() {
           </a>
 
           <nav className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-8 md:flex">
-            {LINKS.map((l) => (
-              <a
-                key={l.href}
-                href={l.href}
-                onClick={(e) => handleNavClick(e, l.href)}
-                className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground transition-colors duration-200 hover:text-primary"
-              >
-                {l.label}
-              </a>
-            ))}
+            {LINKS.map((l) =>
+              l.external ? (
+                <a
+                  key={l.href}
+                  href={l.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground transition-colors duration-200 hover:text-primary"
+                >
+                  {l.label}
+                </a>
+              ) : (
+                <a
+                  key={l.href}
+                  href={l.href}
+                  onClick={(e) => handleNavClick(e, l.href)}
+                  className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground transition-colors duration-200 hover:text-primary"
+                >
+                  {l.label}
+                </a>
+              ),
+            )}
           </nav>
 
           <div className="flex items-center gap-2">
@@ -111,17 +127,31 @@ export function SiteNav() {
         aria-hidden={!open}
       >
         <nav className="flex h-full flex-col items-center justify-center gap-2 px-8">
-          {LINKS.map((l) => (
-            <a
-              key={l.href}
-              href={l.href}
-              onClick={(e) => handleNavClick(e, l.href)}
-              style={{ fontFamily: "var(--font-display)" }}
-              className="px-4 py-3 text-3xl font-semibold tracking-tight text-foreground transition-colors hover:text-primary"
-            >
-              {l.label}
-            </a>
-          ))}
+          {LINKS.map((l) =>
+            l.external ? (
+              <a
+                key={l.href}
+                href={l.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setOpen(false)}
+                style={{ fontFamily: "var(--font-display)" }}
+                className="px-4 py-3 text-3xl font-semibold tracking-tight text-foreground transition-colors hover:text-primary"
+              >
+                {l.label}
+              </a>
+            ) : (
+              <a
+                key={l.href}
+                href={l.href}
+                onClick={(e) => handleNavClick(e, l.href)}
+                style={{ fontFamily: "var(--font-display)" }}
+                className="px-4 py-3 text-3xl font-semibold tracking-tight text-foreground transition-colors hover:text-primary"
+              >
+                {l.label}
+              </a>
+            ),
+          )}
           <a
             href={WHATSAPP_URL}
             target="_blank"
