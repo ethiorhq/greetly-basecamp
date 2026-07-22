@@ -64,9 +64,9 @@ function Index() {
             <img
               src={portraitAsset.url}
               alt="Arsalan Khattak, digital marketing specialist, in a black suit"
-              width={1024}
-              height={1536}
-              className="relative z-10 h-auto w-full max-w-[420px] object-contain drop-shadow-[0_30px_60px_rgba(0,0,0,0.6)] lg:max-w-none lg:max-h-[85vh]"
+              width={618}
+              height={824}
+              className="relative z-10 h-auto w-full max-w-[320px] object-contain drop-shadow-[0_30px_60px_rgba(0,0,0,0.6)] sm:max-w-[380px] lg:max-w-none lg:max-h-[78vh]"
               fetchPriority="high"
             />
           </div>
