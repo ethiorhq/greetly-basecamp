@@ -134,7 +134,7 @@ function Index() {
 }
 
 function SiteFooter() {
-  const year = new Date().getFullYear();
+  
   const socials = [
     { name: "LinkedIn", href: "https://www.linkedin.com/in/arsalan-local-seo-specialist/", Icon: Linkedin },
     { name: "Facebook", href: "https://www.facebook.com/arsalankhattaks", Icon: Facebook },
@@ -174,9 +174,20 @@ function SiteFooter() {
       </div>
 
       <div className="border-t border-border/40">
-        <div className="mx-auto max-w-7xl px-6 py-5 sm:px-8 lg:px-12">
-          <p className="text-xs text-muted-foreground">
-            © {year} Arsalan Khattak. All rights reserved.
+        <div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-3 px-6 py-5 sm:px-8 lg:flex-row lg:items-center lg:px-12">
+          <p className="text-sm text-muted-foreground">
+            © 2026 Arsalan Khattak. All rights reserved.
+          </p>
+          <p className="text-sm text-muted-foreground">
+            Built by{" "}
+            <a
+              href="https://ethior.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-bold text-primary transition-all duration-200 hover:underline hover:drop-shadow-[0_0_10px_var(--color-primary)]"
+            >
+              ETHIOR
+            </a>
           </p>
         </div>
       </div>
