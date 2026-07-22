@@ -127,17 +127,31 @@ export function SiteNav() {
         aria-hidden={!open}
       >
         <nav className="flex h-full flex-col items-center justify-center gap-2 px-8">
-          {LINKS.map((l) => (
-            <a
-              key={l.href}
-              href={l.href}
-              onClick={(e) => handleNavClick(e, l.href)}
-              style={{ fontFamily: "var(--font-display)" }}
-              className="px-4 py-3 text-3xl font-semibold tracking-tight text-foreground transition-colors hover:text-primary"
-            >
-              {l.label}
-            </a>
-          ))}
+          {LINKS.map((l) =>
+            l.external ? (
+              <a
+                key={l.href}
+                href={l.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setOpen(false)}
+                style={{ fontFamily: "var(--font-display)" }}
+                className="px-4 py-3 text-3xl font-semibold tracking-tight text-foreground transition-colors hover:text-primary"
+              >
+                {l.label}
+              </a>
+            ) : (
+              <a
+                key={l.href}
+                href={l.href}
+                onClick={(e) => handleNavClick(e, l.href)}
+                style={{ fontFamily: "var(--font-display)" }}
+                className="px-4 py-3 text-3xl font-semibold tracking-tight text-foreground transition-colors hover:text-primary"
+              >
+                {l.label}
+              </a>
+            ),
+          )}
           <a
             href={WHATSAPP_URL}
             target="_blank"
