@@ -50,13 +50,19 @@ export function SiteNav() {
   return (
     <div className="pointer-events-none fixed inset-x-0 top-0 z-50 flex justify-center px-4 pt-4 sm:pt-6">
       <header
-        className={`pointer-events-auto w-full max-w-5xl rounded-full border transition-all duration-300 ${
+        className={`pointer-events-auto relative z-[60] w-full max-w-5xl rounded-full border transition-all duration-300 ease-out ${
           scrolled
             ? "border-primary/20 bg-background/80 shadow-[0_8px_40px_-12px_rgba(0,0,0,0.8)] backdrop-blur-xl"
             : "border-white/10 bg-background/50 backdrop-blur-md"
         }`}
       >
-        <div className="flex items-center justify-between gap-4 py-2.5 pl-5 pr-2.5 sm:py-3 sm:pl-6 sm:pr-3">
+        <div
+          className={`flex items-center justify-between gap-4 transition-all duration-300 ease-out ${
+            scrolled
+              ? "py-1.5 pl-4 pr-1.5 sm:py-2 sm:pl-5 sm:pr-2"
+              : "py-2.5 pl-5 pr-2.5 sm:py-3 sm:pl-6 sm:pr-3"
+          }`}
+        >
           <a
             href="#top"
             onClick={(e) => {
@@ -65,7 +71,9 @@ export function SiteNav() {
               setOpen(false);
             }}
             style={{ fontFamily: "var(--font-display)" }}
-            className="text-sm font-semibold tracking-tight text-foreground sm:text-base"
+            className={`font-semibold tracking-tight text-foreground transition-all duration-300 ${
+              scrolled ? "text-xs sm:text-sm" : "text-sm sm:text-base"
+            }`}
           >
             Arsalan Khattak
           </a>
@@ -100,7 +108,9 @@ export function SiteNav() {
               href={WHATSAPP_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="group hidden items-center gap-1.5 rounded-full bg-primary px-4 py-2 text-xs font-semibold uppercase tracking-wider text-primary-foreground transition-all duration-300 hover:shadow-[0_0_30px_-6px_var(--color-primary)] focus:outline-none focus-visible:ring-2 focus-visible:ring-primary md:inline-flex"
+              className={`group hidden items-center gap-1.5 rounded-full bg-primary font-semibold uppercase tracking-wider text-primary-foreground transition-all duration-300 hover:shadow-[0_0_30px_-6px_var(--color-primary)] focus:outline-none focus-visible:ring-2 focus-visible:ring-primary md:inline-flex ${
+                scrolled ? "px-3 py-1.5 text-[11px]" : "px-4 py-2 text-xs"
+              }`}
             >
               Let's Talk
               <ArrowRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5" />
@@ -111,13 +121,18 @@ export function SiteNav() {
               aria-label={open ? "Close menu" : "Open menu"}
               aria-expanded={open}
               onClick={() => setOpen((v) => !v)}
-              className="flex h-9 w-9 items-center justify-center rounded-full border border-border text-foreground transition-colors hover:border-primary/60 hover:text-primary md:hidden"
+              className={`relative z-[70] flex items-center justify-center rounded-full border text-foreground transition-all duration-300 hover:border-primary/60 hover:text-primary md:hidden ${
+                open
+                  ? "border-primary/60 bg-background text-primary"
+                  : "border-border"
+              } ${scrolled ? "h-8 w-8" : "h-9 w-9"}`}
             >
               {open ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
             </button>
           </div>
         </div>
       </header>
+
 
       {/* Mobile fullscreen menu */}
       <div
