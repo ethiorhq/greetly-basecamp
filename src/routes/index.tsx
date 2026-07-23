@@ -382,6 +382,64 @@ function ContactSection() {
   );
 }
 
+function CertifiedExpertiseSection() {
+  return (
+    <section
+      id="certification"
+      className="relative mx-auto max-w-7xl px-6 py-14 sm:px-8 sm:py-24 lg:px-12"
+    >
+      <div className="mx-auto flex max-w-2xl flex-col items-center text-center">
+        <div className="flex items-center gap-3">
+          <span aria-hidden className="h-px w-10 bg-primary" />
+          <p className="font-sans text-xs font-medium uppercase tracking-[0.35em] text-primary">
+            Certification
+          </p>
+          <span aria-hidden className="h-px w-10 bg-primary" />
+        </div>
+
+        <h2
+          style={{ fontFamily: "var(--font-display)" }}
+          className="mt-6 text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl"
+        >
+          Trained & Certified in{" "}
+          <span className="text-primary">Local SEO</span>
+        </h2>
+      </div>
+
+      <div className="mx-auto mt-12 flex max-w-xl flex-col items-center">
+        <a
+          href={certAsset.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="View full-size Local SEO with AI certificate"
+          className="group relative block w-full overflow-hidden rounded-2xl border border-border bg-card p-3 transition-all duration-300 ease-out hover:-translate-y-1 hover:border-primary/60 hover:shadow-[0_20px_60px_-20px_var(--color-primary)] focus:outline-none focus-visible:-translate-y-1 focus-visible:border-primary/60 focus-visible:shadow-[0_20px_60px_-20px_var(--color-primary)]"
+        >
+          <div className="relative overflow-hidden rounded-xl">
+            <img
+              src={certAsset.url}
+              alt="Local SEO with AI certificate from Skills Heaven, Sharjah UAE"
+              width={800}
+              height={600}
+              className="w-full object-contain transition-transform duration-500 group-hover:scale-[1.02]"
+            />
+            <div className="absolute inset-0 flex items-center justify-center bg-background/40 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+              <div className="flex items-center gap-2 rounded-full bg-primary px-4 py-2 text-xs font-semibold uppercase tracking-wider text-primary-foreground">
+                <Award className="h-4 w-4" />
+                View Certificate
+              </div>
+            </div>
+          </div>
+        </a>
+
+        <p className="mt-5 flex items-center gap-2 text-sm text-muted-foreground sm:text-base">
+          <Award className="h-4 w-4 text-primary" />
+          Local SEO with AI — Skills Heaven, Sharjah UAE
+        </p>
+      </div>
+    </section>
+  );
+}
+
 const STATS: { value: string; label: string }[] = [
   { value: "150+", label: "Rankings Improved" },
   { value: "3x", label: "Local Visibility Growth" },
