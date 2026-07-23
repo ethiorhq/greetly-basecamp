@@ -125,6 +125,8 @@ function Index() {
 
       <ResultsSection />
 
+      <CertifiedExpertiseSection />
+
       <AboutSection />
 
       <ContactSection />
