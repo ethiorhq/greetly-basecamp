@@ -15,6 +15,48 @@ export const Route = createFileRoute("/")({
     const description =
       "My goal is to help businesses attract the right audience, build trust, and achieve long-term growth through proven digital marketing solutions.";
     const title = "Arsalan Khattak | Digital Marketing Specialist";
+    const siteUrl = "https://arsalankhattak.com/";
+    const personId = `${siteUrl}#person`;
+
+    const structuredData = {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Person",
+          "@id": personId,
+          name: "Arsalan Khattak",
+          jobTitle: "Digital Marketing Specialist",
+          url: siteUrl,
+          image: portraitAsset.url,
+          sameAs: [
+            "https://www.linkedin.com/in/arsalan-local-seo-specialist/",
+            "https://www.facebook.com/arsalankhattaks",
+          ],
+        },
+        {
+          "@type": "Service",
+          serviceType: "SEO",
+          provider: { "@id": personId },
+          description:
+            "Rank higher on Google with technical fixes, keyword strategy, and content that pulls in the right traffic.",
+        },
+        {
+          "@type": "Service",
+          serviceType: "Local SEO",
+          provider: { "@id": personId },
+          description:
+            "Optimize your Google Business Profile so nearby customers find you first when they're ready to buy.",
+        },
+        {
+          "@type": "Service",
+          serviceType: "Social Media Marketing",
+          provider: { "@id": personId },
+          description:
+            "Build a magnetic brand presence with strategy, content, and engagement that turns followers into leads.",
+        },
+      ],
+    };
+
     return {
       meta: [
         { title },
@@ -31,6 +73,12 @@ export const Route = createFileRoute("/")({
         { name: "twitter:image", content: portraitAsset.url },
       ],
       links: [{ rel: "canonical", href: "/" }],
+      scripts: [
+        {
+          type: "application/ld+json",
+          children: JSON.stringify(structuredData),
+        },
+      ],
     };
   },
 });
