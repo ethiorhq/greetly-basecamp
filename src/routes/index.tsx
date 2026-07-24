@@ -230,7 +230,7 @@ function SiteFooter() {
               aria-label={name}
               className="flex h-10 w-10 items-center justify-center rounded-full border border-border text-muted-foreground transition-colors duration-200 hover:border-primary/60 hover:text-primary focus:outline-none focus-visible:border-primary/60 focus-visible:text-primary"
             >
-              <Icon className="h-4 w-4" strokeWidth={2} />
+              <Icon className="h-4 w-4" />
             </a>
           ))}
         </nav>
