@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { ArrowRight, TrendingUp, MapPin, Share2, Send, Linkedin, Instagram, Facebook, MessageCircle, Award, type LucideIcon } from "lucide-react";
+import { ArrowRight, TrendingUp, MapPin, Share2, Send, Linkedin, Instagram, Facebook, Award, type LucideIcon } from "lucide-react";
 import { useState } from "react";
 import { z } from "zod";
 import portraitAsset from "@/assets/arsalan-portrait.png.asset.json";
