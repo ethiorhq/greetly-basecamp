@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, TrendingUp, MapPin, Share2, Send, Linkedin, Instagram, Facebook, Award, ChevronDown, type LucideIcon } from "lucide-react";
 import { useState } from "react";
 import { z } from "zod";
