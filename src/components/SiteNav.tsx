@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { ArrowRight, Menu, X } from "lucide-react";
+import { useRouterState } from "@tanstack/react-router";
 
 const WHATSAPP_URL =
   "https://api.whatsapp.com/send/?phone=923118099156&text&type=phone_number&app_absent=0";
@@ -19,6 +20,9 @@ const LINKS = [
 export function SiteNav() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const isHome = pathname === "/";
+  const hashHref = (href: string) => (isHome ? href : `/${href}`);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
@@ -65,8 +69,9 @@ export function SiteNav() {
           }`}
         >
           <a
-            href="#top"
+            href={isHome ? "#top" : "/"}
             onClick={(e) => {
+              if (!isHome) return;
               e.preventDefault();
               window.scrollTo({ top: 0, behavior: "smooth" });
               setOpen(false);
@@ -94,7 +99,7 @@ export function SiteNav() {
               ) : (
                 <a
                   key={l.href}
-                  href={l.href}
+                  href={hashHref(l.href)}
                   onClick={(e) => handleNavClick(e, l.href)}
                   className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground transition-colors duration-200 hover:text-primary"
                 >
@@ -159,7 +164,7 @@ export function SiteNav() {
             ) : (
               <a
                 key={l.href}
-                href={l.href}
+                href={hashHref(l.href)}
                 onClick={(e) => handleNavClick(e, l.href)}
                 style={{ fontFamily: "var(--font-display)" }}
                 className="px-4 py-3 text-3xl font-semibold tracking-tight text-foreground transition-colors hover:text-primary"

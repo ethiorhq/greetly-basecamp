@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, TrendingUp, MapPin, Share2, Send, Linkedin, Instagram, Facebook, Award, ChevronDown, type LucideIcon } from "lucide-react";
 import { useState } from "react";
 import { z } from "zod";
@@ -240,9 +240,18 @@ function SiteFooter() {
 
       <div className="border-t border-border/40">
         <div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-3 px-6 py-5 sm:px-8 lg:flex-row lg:items-center lg:px-12">
-          <p className="text-sm text-muted-foreground">
-            © 2026 Arsalan Khattak. All rights reserved.
-          </p>
+          <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-muted-foreground">
+            <span>© 2026 Arsalan Khattak. All rights reserved.</span>
+            <span aria-hidden="true" className="text-border">|</span>
+            <Link to="/terms" className="transition-colors hover:text-primary">
+              Terms &amp; Conditions
+            </Link>
+            <span aria-hidden="true" className="text-border">|</span>
+            <Link to="/privacy" className="transition-colors hover:text-primary">
+              Privacy Policy
+            </Link>
+          </div>
+
           <p className="text-sm text-muted-foreground">
             Built by{" "}
             <a
@@ -439,7 +448,16 @@ function ContactSection() {
             <Send className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
           </button>
         </div>
+
+        <p className="text-xs text-muted-foreground">
+          By submitting this form, you agree to our{" "}
+          <Link to="/privacy" className="underline underline-offset-2 transition-colors hover:text-primary">
+            Privacy Policy
+          </Link>
+          .
+        </p>
       </form>
+
     </section>
   );
 }
