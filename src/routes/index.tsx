@@ -177,6 +177,8 @@ function Index() {
 
       <AboutSection />
 
+      <FAQSection />
+
       <ContactSection />
 
       <SiteFooter />
