@@ -240,9 +240,18 @@ function SiteFooter() {
 
       <div className="border-t border-border/40">
         <div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-3 px-6 py-5 sm:px-8 lg:flex-row lg:items-center lg:px-12">
-          <p className="text-sm text-muted-foreground">
-            © 2026 Arsalan Khattak. All rights reserved.
-          </p>
+          <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-muted-foreground">
+            <span>© 2026 Arsalan Khattak. All rights reserved.</span>
+            <span aria-hidden="true" className="text-border">|</span>
+            <Link to="/terms" className="transition-colors hover:text-primary">
+              Terms &amp; Conditions
+            </Link>
+            <span aria-hidden="true" className="text-border">|</span>
+            <Link to="/privacy" className="transition-colors hover:text-primary">
+              Privacy Policy
+            </Link>
+          </div>
+
           <p className="text-sm text-muted-foreground">
             Built by{" "}
             <a
