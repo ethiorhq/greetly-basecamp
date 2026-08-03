@@ -556,6 +556,119 @@ function AboutSection() {
   );
 }
 
+const FAQS: { question: string; answer: string }[] = [
+  {
+    question: "What's the difference between SEO and Local SEO, and which one do I need?",
+    answer:
+      "SEO covers your overall search visibility, while Local SEO focuses specifically on getting your business found by nearby customers on Google Maps and local search results. If you serve a specific city or area, Local SEO is where most of your ROI comes from.",
+  },
+  {
+    question: "Do you only handle SEO, or can you manage my social media too?",
+    answer:
+      "I offer Social Media Marketing alongside SEO — building your brand presence, running campaigns, and turning followers into actual leads. Many clients combine both since search and social work best together.",
+  },
+  {
+    question: "How does a project actually start once I reach out?",
+    answer:
+      "It starts with a free audit of your current online presence, followed by a custom strategy based on your goals and budget. From there, we agree on scope, timeline, and deliverables before any work begins.",
+  },
+  {
+    question: "Do you require payment upfront?",
+    answer:
+      "Yes, I typically require an advance/partial payment before starting a project — this covers initial strategy and setup work. The remaining balance is structured around agreed milestones or monthly billing, depending on the project type.",
+  },
+  {
+    question: "How do you measure and report results?",
+    answer:
+      "I track key metrics — rankings, organic traffic, leads, and engagement — and share regular reports so you can see exactly what's working. Growth in SEO takes time, but you'll always know where things stand.",
+  },
+];
+
+function FAQSection() {
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+
+  function toggle(index: number) {
+    setOpenIndex((current) => (current === index ? null : index));
+  }
+
+  return (
+    <section
+      id="faq"
+      className="relative mx-auto max-w-7xl px-6 py-14 sm:px-8 sm:py-24 lg:px-12"
+    >
+      <div className="mx-auto flex max-w-2xl flex-col items-center text-center">
+        <div className="flex items-center gap-3">
+          <span aria-hidden className="h-px w-10 bg-primary" />
+          <p className="font-sans text-xs font-medium uppercase tracking-[0.35em] text-primary">
+            FAQ
+          </p>
+          <span aria-hidden className="h-px w-10 bg-primary" />
+        </div>
+
+        <h2
+          style={{ fontFamily: "var(--font-display)" }}
+          className="mt-6 text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl"
+        >
+          Frequently Asked{" "}
+          <span className="text-primary">Questions.</span>
+        </h2>
+      </div>
+
+      <div className="mx-auto mt-12 max-w-3xl space-y-4 sm:mt-16">
+        {FAQS.map(({ question, answer }, index) => {
+          const isOpen = openIndex === index;
+          return (
+            <div
+              key={question}
+              className={`rounded-2xl border bg-card transition-all duration-300 ease-out ${
+                isOpen
+                  ? "border-primary/60 shadow-[0_20px_60px_-20px_var(--color-primary)]"
+                  : "border-border hover:border-primary/60"
+              }`}
+            >
+              <button
+                type="button"
+                onClick={() => toggle(index)}
+                aria-expanded={isOpen}
+                className="flex w-full items-center justify-between gap-4 p-6 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background sm:p-8"
+              >
+                <span
+                  style={{ fontFamily: "var(--font-display)" }}
+                  className={`text-base font-semibold leading-snug transition-colors duration-200 sm:text-lg ${
+                    isOpen ? "text-primary" : "text-foreground hover:text-primary"
+                  }`}
+                >
+                  {question}
+                </span>
+                <span
+                  className={`flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full border transition-all duration-300 ${
+                    isOpen
+                      ? "rotate-180 border-primary/60 bg-primary/10 text-primary"
+                      : "border-border text-muted-foreground"
+                  }`}
+                >
+                  <ChevronDown className="h-4 w-4" />
+                </span>
+              </button>
+
+              <div
+                className="grid transition-[grid-template-rows] duration-300 ease-out"
+                style={{ gridTemplateRows: isOpen ? "1fr" : "0fr" }}
+              >
+                <div className="overflow-hidden">
+                  <p className="px-6 pb-6 text-sm leading-relaxed text-muted-foreground sm:px-8 sm:pb-8 sm:text-base">
+                    {answer}
+                  </p>
+                </div>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </section>
+  );
+}
+
 type Service = {
   icon: LucideIcon;
   name: string;
