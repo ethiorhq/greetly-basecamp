@@ -5,6 +5,7 @@ import { z } from "zod";
 import portraitAsset from "@/assets/arsalan-portrait.png.asset.json";
 import certAsset from "@/assets/cert.png.asset.json";
 import { SiteNav } from "@/components/SiteNav";
+import { FloatingWhatsApp } from "@/components/FloatingWhatsApp";
 
 const WHATSAPP_PHONE = "923118099156";
 const WHATSAPP_URL = `https://api.whatsapp.com/send/?phone=${WHATSAPP_PHONE}&text&type=phone_number&app_absent=0`;
