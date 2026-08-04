@@ -98,7 +98,10 @@ function Index() {
         }}
       />
 
-      <section className="relative mx-auto flex min-h-screen max-w-7xl flex-col justify-center px-6 pb-16 pt-32 sm:px-8 sm:pt-36 lg:px-12 lg:pt-40">
+      <section
+        id="hero"
+        className="relative mx-auto flex min-h-screen max-w-7xl flex-col justify-center px-6 pb-16 pt-32 sm:px-8 sm:pt-36 lg:px-12 lg:pt-40"
+      >
         <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-12 lg:gap-8">
           {/* Portrait — first on mobile, right on desktop */}
           <div className="relative order-first flex items-end justify-center lg:order-last lg:col-span-5">
