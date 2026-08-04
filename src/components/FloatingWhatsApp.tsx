@@ -23,15 +23,29 @@ export function FloatingWhatsApp() {
     const hero = document.getElementById("hero");
     if (!hero) return;
 
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        setVisible(!entry.isIntersecting);
-      },
-      { threshold: 0.1 },
-    );
+    const threshold = 0.85;
+    const update = () => {
+      const heroBottom = hero.offsetTop + hero.offsetHeight;
+      setVisible(window.scrollY > heroBottom * threshold);
+    };
 
-    observer.observe(hero);
-    return () => observer.disconnect();
+    let observer: IntersectionObserver | null = null;
+    if (typeof IntersectionObserver !== "undefined") {
+      observer = new IntersectionObserver(
+        ([entry]) => {
+          setVisible(!entry.isIntersecting);
+        },
+        { threshold: 0.1 },
+      );
+      observer.observe(hero);
+    }
+
+    update();
+    window.addEventListener("scroll", update, { passive: true });
+    return () => {
+      observer?.disconnect();
+      window.removeEventListener("scroll", update);
+    };
   }, []);
 
   return (
