@@ -186,6 +186,7 @@ function Index() {
       <ContactSection />
 
       <SiteFooter />
+      <FloatingWhatsApp />
     </main>
   );
 }
