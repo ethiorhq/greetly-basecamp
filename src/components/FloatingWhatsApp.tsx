@@ -50,11 +50,11 @@ export function FloatingWhatsApp() {
       {/* Pulsing ring */}
       <span
         aria-hidden
-        className="absolute inset-0 rounded-full"
+        className="absolute inset-0 rounded-full animate-ping"
         style={{
           backgroundColor: "#25D366",
           opacity: 0.35,
-          animation: "ping 2.5s cubic-bezier(0, 0, 0.2, 1) infinite",
+          animationDuration: "2.5s",
         }}
       />
       <WhatsAppLogo className="relative z-10 h-7 w-7" />
