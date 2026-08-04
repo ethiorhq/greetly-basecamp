@@ -26,7 +26,9 @@ export function FloatingWhatsApp() {
     const threshold = 0.85;
     const update = () => {
       const heroBottom = hero.offsetTop + hero.offsetHeight;
-      setVisible(window.scrollY > heroBottom * threshold);
+      const shouldShow = window.scrollY > heroBottom * threshold;
+      console.log("FloatingWhatsApp update", { scrollY: window.scrollY, heroBottom, shouldShow });
+      setVisible(shouldShow);
     };
 
     let observer: IntersectionObserver | null = null;
