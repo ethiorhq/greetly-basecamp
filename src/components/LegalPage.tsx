@@ -1,3 +1,4 @@
+import { SiteFooter } from "@/components/SiteFooter";
 import { SiteNav } from "@/components/SiteNav";
 import { Link } from "@tanstack/react-router";
 
@@ -22,7 +23,7 @@ export function LegalPage({
       <main className="mx-auto max-w-[720px] px-6 pb-20 pt-32 sm:px-8 sm:pt-36">
         <h1
           style={{ fontFamily: "var(--font-display)" }}
-          className="text-4xl font-bold tracking-tight text-primary sm:text-5xl"
+          className="text-4xl font-bold tracking-normal text-primary sm:text-5xl"
         >
           {title}
         </h1>
@@ -35,7 +36,7 @@ export function LegalPage({
             <section key={section.heading}>
               <h2
                 style={{ fontFamily: "var(--font-display)" }}
-                className="text-xl font-semibold tracking-tight text-primary"
+                className="text-xl font-semibold tracking-normal text-primary"
               >
                 {section.heading}
               </h2>
@@ -62,6 +63,7 @@ export function LegalPage({
           </Link>
         </div>
       </main>
+      <SiteFooter />
     </div>
   );
 }
