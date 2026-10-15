@@ -1,86 +1,45 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { LegalPage, type LegalSection } from "@/components/LegalPage";
-
-const title = "Privacy Policy | Arsalan Khattak";
-const description =
-  "How Arsalan Khattak collects, uses, and protects information submitted through this website's contact form, analytics, and third-party services.";
-
-export const Route = createFileRoute("/privacy")({
-  component: PrivacyPage,
-  head: () => ({
-    meta: [
-      { title },
-      { name: "description", content: description },
-      { property: "og:title", content: title },
-      { property: "og:description", content: description },
-    ],
-  }),
-});
-
-const SECTIONS: LegalSection[] = [
+import { brand } from "@/lib/brand";
+const title = "Privacy Policy | Huzaifa Bukhari";
+const description = "Privacy information for Huzaifa Bukhari\u2019s WhatsApp contact flow and website.";
+export const Route = createFileRoute("/privacy")({ component: Page, head: () => ({ meta: [{ title }, { name: "description", content: description }, { property: "og:title", content: title }, { property: "og:description", content: description }, { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary_large_image" }], links: [{ rel: "canonical", href: `${brand.siteUrl}/privacy` }] }) });
+const sections: LegalSection[] = [
   {
-    heading: "1. Overview",
-    paragraphs: [
-      "This Privacy Policy explains how I collect, use, and protect information when you visit this website or contact me through it.",
-    ],
+    "heading": "1. Overview",
+    "paragraphs": [
+      "This page describes the website contact flow for Huzaifa Bukhari and the information involved when you choose to get in touch."
+    ]
   },
   {
-    heading: "2. Information I Collect",
-    paragraphs: [
-      "When you use the contact form on this website, I collect the information you voluntarily submit, which may include your name, email address, and message content. If you contact me via WhatsApp, standard WhatsApp messaging data applies, governed by WhatsApp's own privacy policy.",
-      "This website may also use analytics tools (such as Google Analytics) to understand general visitor behavior — such as pages visited and approximate location — which does not personally identify you.",
-    ],
+    "heading": "2. Contact Form",
+    "paragraphs": [
+      "The form uses your name, email address and message to prepare a WhatsApp draft in your browser. The website does not save form submissions in an application database or send them by email. Your text is included in the WhatsApp link when you open the draft."
+    ]
   },
   {
-    heading: "3. How I Use Your Information",
-    paragraphs: [
-      "Information submitted through the contact form is used solely to respond to your inquiry and discuss potential services. I do not sell, rent, or share your personal information with third parties for marketing purposes.",
-    ],
+    "heading": "3. WhatsApp and Email",
+    "paragraphs": [
+      "You decide whether to send the draft in WhatsApp. Messages sent through WhatsApp or directly by email are used to respond to your inquiry and discuss potential services. WhatsApp’s own privacy policy applies to its service."
+    ]
   },
   {
-    heading: "4. Cookies & Analytics",
-    paragraphs: [
-      "This site may use cookies or similar tracking technologies through analytics services to understand how visitors use the site and improve it over time. You can disable cookies through your browser settings, though this may affect some site functionality.",
-    ],
+    "heading": "4. Analytics and Hosting",
+    "paragraphs": [
+      "No Google Analytics tracking has been configured for this website. The hosting provider may process technical request information to deliver and protect the site. If additional analytics are introduced, this policy should be reviewed and any required consent implemented."
+    ]
   },
   {
-    heading: "5. Data Retention",
-    paragraphs: [
-      "Contact form submissions and related correspondence are retained only as long as necessary to respond to your inquiry or maintain a business relationship, after which they may be deleted.",
-    ],
+    "heading": "5. Third-Party Links",
+    "paragraphs": [
+      "Links to LinkedIn, Facebook, Instagram, WhatsApp and ETHIOR take you to other websites with their own privacy practices. Review their policies before sharing information."
+    ]
   },
   {
-    heading: "6. Third-Party Services",
-    paragraphs: [
-      "This site may link to or integrate with third-party services (such as WhatsApp, LinkedIn, Facebook, or Instagram). These platforms have their own privacy policies, and I encourage you to review them separately.",
-    ],
-  },
-  {
-    heading: "7. Your Rights",
-    paragraphs: [
-      "You may request to know what information I hold about you, request corrections, or request deletion of your information at any time by contacting me directly.",
-    ],
-  },
-  {
-    heading: "8. Changes to This Policy",
-    paragraphs: [
-      'This Privacy Policy may be updated periodically. Changes will be reflected with an updated "Last updated" date at the top of this page.',
-    ],
-  },
-  {
-    heading: "9. Contact",
-    paragraphs: [
-      "For any privacy-related questions or requests, please reach out via the contact form on this website or through WhatsApp.",
-    ],
-  },
+    "heading": "6. Privacy Requests",
+    "paragraphs": [
+      "For questions about correspondence or requests concerning your information, contact info@huzaifabukhari.com or WhatsApp +92 332 0218839. Any service-specific information handling should be agreed directly before a project begins."
+    ]
+  }
 ];
-
-function PrivacyPage() {
-  return (
-    <LegalPage
-      title="Privacy Policy"
-      lastUpdated="04 Aug 2026"
-      sections={SECTIONS}
-    />
-  );
-}
+function Page() { return <LegalPage title="Privacy Policy" lastUpdated="14 Oct 2026" sections={sections} />; }

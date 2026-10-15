@@ -1,16 +1,17 @@
-# Arsalan Khattak — Digital Marketing Specialist
+# Huzaifa Bukhari — Performance Marketer
 
-Personal brand and lead-generation site for Arsalan Khattak, offering SEO, Local SEO, and Social Media Marketing services.
-
-## Tech
-
-- TanStack Start (React 19 + Vite 7)
-- Tailwind CSS v4
-- TypeScript
+Personal website for a Pakistan-based Meta Ads and growth strategy specialist.
+Built with TanStack Start, React 19, TypeScript and Tailwind CSS v4.
 
 ## Development
 
-```bash
+```sh
 bun install
 bun run dev
 ```
+
+Contact forms prepare WhatsApp drafts, not stored inquiries. Legal pages are
+website-specific drafts requiring owner review before publication.
+The intended domain is huzaifabukhari.com; it is not connected by this rewrite.
+Portrait/work media, testimonials, package pricing, booking and analytics remain
+pending real assets or settings. Supplied Drive media could not be inspected publicly.

@@ -25,9 +25,10 @@
 .eyebrow > span { display: inline-block; width: 28px; height: 1px; background: var(--primary); flex-shrink: 0; }
 .hero-section { position: relative; }
 .hero-note { position: relative; }
+.hero-note { display: none; }
 .whatsapp-ring { animation: whatsapp-pulse 2.8s ease-out infinite; }
 html[data-menu-open="true"] .floating-whatsapp { display: none; }
 @keyframes whatsapp-pulse { 0% { transform: scale(1); opacity: .35; } 70%,100% { transform: scale(1.65); opacity: 0; } }
 @media (min-width: 640px) { .site-container { padding-inline: 32px; } .section-space { padding-block: 88px; } }
-@media (min-width: 1024px) { .site-container { padding-inline: 48px; } .section-space { padding-block: 96px; } }
+@media (min-width: 1024px) { .site-container { padding-inline: 48px; } .section-space { padding-block: 96px; } .hero-note { display: flex; } }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation: none !important; transition: none !important; } }
