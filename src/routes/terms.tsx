@@ -1,97 +1,51 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { LegalPage, type LegalSection } from "@/components/LegalPage";
-
-const title = "Terms & Conditions | Arsalan Khattak";
-const description =
-  "Terms & Conditions for the website and digital marketing services of Arsalan Khattak — scope, payments, results, liability and governing law.";
-
-export const Route = createFileRoute("/terms")({
-  component: TermsPage,
-  head: () => ({
-    meta: [
-      { title },
-      { name: "description", content: description },
-      { property: "og:title", content: title },
-      { property: "og:description", content: description },
-    ],
-  }),
-});
-
-const SECTIONS: LegalSection[] = [
+import { brand } from "@/lib/brand";
+const title = "Terms & Conditions | Huzaifa Bukhari";
+const description = "Terms for Huzaifa Bukhari\u2019s performance marketing website and services.";
+export const Route = createFileRoute("/terms")({ component: Page, head: () => ({ meta: [{ title }, { name: "description", content: description }, { property: "og:title", content: title }, { property: "og:description", content: description }, { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary_large_image" }], links: [{ rel: "canonical", href: `${brand.siteUrl}/terms` }] }) });
+const sections: LegalSection[] = [
   {
-    heading: "1. Overview",
-    paragraphs: [
-      'These Terms & Conditions govern your use of this website and any digital marketing services provided by Arsalan Khattak ("I," "me," "my"). By contacting me through this website or engaging my services, you agree to these terms.',
-    ],
+    "heading": "1. Overview",
+    "paragraphs": [
+      "This website introduces Huzaifa Bukhari’s performance marketing services. Any engagement is subject to a separately agreed scope and terms."
+    ]
   },
   {
-    heading: "2. Services",
-    paragraphs: [
-      "I provide SEO, Local SEO, and Social Media Marketing services. The exact scope, deliverables, and timeline for any project are agreed upon separately with each client before work begins, typically following an initial audit and strategy discussion.",
-    ],
+    "heading": "2. Services",
+    "paragraphs": [
+      "Services include Meta Ads Management (Facebook & Instagram), Lead Generation Campaigns, Audience Research & Targeting, Campaign Optimization & Performance Tracking, and Advertising Strategy & Creative Testing."
+    ]
   },
   {
-    heading: "3. Payments",
-    paragraphs: [
-      "A partial or advance payment is generally required before work begins on a project, covering initial strategy and setup. Remaining balances are structured around agreed milestones or recurring billing, depending on the engagement. Payment terms for a specific project will be confirmed directly with the client before starting.",
-    ],
+    "heading": "3. Project Agreements",
+    "paragraphs": [
+      "Scope, deliverables, fees, payment arrangements and timelines must be agreed directly before work begins. This website does not publish fixed packages or payment requirements."
+    ]
   },
   {
-    heading: "4. No Guaranteed Results",
-    paragraphs: [
-      "Digital marketing, SEO, and social media performance depend on many factors outside my direct control, including search engine algorithm changes, market competition, and platform policies. While I apply proven strategies and report results transparently, I cannot guarantee specific rankings, traffic numbers, or revenue outcomes.",
-    ],
+    "heading": "4. Advertising Outcomes",
+    "paragraphs": [
+      "Advertising outcomes depend on factors including the offer, audience, budget, market conditions and platform policies. Specific leads, sales or returns are not guaranteed."
+    ]
   },
   {
-    heading: "5. Client Responsibilities",
-    paragraphs: [
-      "Clients are expected to provide timely access to relevant accounts (e.g. Google Business Profile, social media accounts, website access) and reasonably prompt feedback where needed, as delays on the client's side may affect project timelines and results.",
-    ],
+    "heading": "5. Website Inquiries",
+    "paragraphs": [
+      "The contact form prepares a WhatsApp message. You must send that message in WhatsApp to make an inquiry. Preparing a draft does not create a service agreement."
+    ]
   },
   {
-    heading: "6. Intellectual Property",
-    paragraphs: [
-      "Any strategy documents, reports, or custom content I create for a client become the client's property upon full payment, unless otherwise agreed in writing. I retain the right to reference completed projects (with client permission) as portfolio examples.",
-    ],
+    "heading": "6. Third-Party Platforms",
+    "paragraphs": [
+      "WhatsApp, Meta and linked social platforms operate under their own terms. Huzaifa Bukhari does not control those platforms."
+    ]
   },
   {
-    heading: "7. Limitation of Liability",
-    paragraphs: [
-      "I am not liable for indirect, incidental, or consequential damages arising from the use of my services, including but not limited to loss of revenue, data, or business opportunities, except where such liability cannot be excluded under applicable law.",
-    ],
-  },
-  {
-    heading: "8. Termination",
-    paragraphs: [
-      "Either party may terminate an ongoing engagement with reasonable written notice. Any work completed and payments due up to the termination date remain payable.",
-    ],
-  },
-  {
-    heading: "9. Changes to These Terms",
-    paragraphs: [
-      "These terms may be updated from time to time. Continued use of this website or my services after changes are posted constitutes acceptance of the updated terms.",
-    ],
-  },
-  {
-    heading: "10. Governing Law",
-    paragraphs: [
-      "These Terms & Conditions are governed by the laws of Pakistan.",
-    ],
-  },
-  {
-    heading: "11. Contact",
-    paragraphs: [
-      "For any questions about these terms, please reach out via the contact form on this website or through WhatsApp.",
-    ],
-  },
+    "heading": "7. Contact",
+    "paragraphs": [
+      "Questions about this website or proposed services can be sent to info@huzaifabukhari.com or through WhatsApp at +92 332 0218839."
+    ]
+  }
 ];
-
-function TermsPage() {
-  return (
-    <LegalPage
-      title="Terms & Conditions"
-      lastUpdated="04 Aug 2026"
-      sections={SECTIONS}
-    />
-  );
-}
+function Page() { return <LegalPage title="Terms & Conditions" lastUpdated="14 Oct 2026" sections={sections} />; }
