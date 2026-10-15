@@ -1,6 +1,6 @@
 # Huzaifa rewrite
-- [ ] Replace identity, palette and homepage content.
-- [ ] Share contact settings and improve navigation/WhatsApp interactions.
-- [ ] Update legal drafts and public search/share metadata.
-- [ ] Test contact rules and desktop/mobile flows; inspect build diagnostics.
-- [ ] Record structural decisions and report missing optional inputs.
+- [x] Replace identity, palette and homepage content.
+- [x] Share contact settings and improve navigation/WhatsApp interactions.
+- [x] Update legal drafts and public search/share metadata.
+- [x] Test contact rules and desktop/mobile flows; inspect build diagnostics.
+- [x] Record structural decisions and report missing optional inputs.
