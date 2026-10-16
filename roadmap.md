@@ -4,3 +4,7 @@
 - [x] Update legal drafts and public search/share metadata.
 - [x] Test contact rules and desktop/mobile flows; inspect build diagnostics.
 - [x] Record structural decisions and report missing optional inputs.
+
+# Option B recolor
+- [x] Apply cool white / indigo / coral palette and Plus Jakarta Sans headings.
+- [x] Verify tests, pages and contact flow.
