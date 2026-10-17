@@ -13,3 +13,4 @@
 - Use shared SiteNav and SiteFooter on home and legal pages so navigation and identity do not drift.
 - Contact submission prepares an external WhatsApp draft client-side without persisting inquiries; preserve entered data and a fallback draft link.
 - Keep legal pages aligned to the actual contact flow and review their drafts before publishing.
+- Share interactive glow styling through the Button base class and global link rules, using semantic CSS tokens, so home and legal controls stay consistent without changing destinations.
