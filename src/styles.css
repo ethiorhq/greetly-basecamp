@@ -53,26 +53,29 @@ html[data-menu-open="true"] .floating-whatsapp { display: none; }
 }
 .neon-hover:hover, .neon-hover:focus-within {
   transform: translateY(-2px);
-  border-color: color-mix(in oklab, var(--primary) 55%, transparent);
+  border-color: color-mix(in oklab, var(--primary) 70%, transparent);
   box-shadow:
-    0 0 0 1px color-mix(in oklab, var(--primary) 30%, transparent),
-    0 0 20px color-mix(in oklab, var(--primary) 28%, transparent),
-    0 18px 42px -18px color-mix(in oklab, var(--primary) 45%, transparent);
+    0 0 0 1px color-mix(in oklab, var(--primary) 40%, transparent),
+    0 0 28px color-mix(in oklab, var(--primary) 40%, transparent),
+    0 0 60px color-mix(in oklab, var(--primary) 25%, transparent),
+    0 18px 42px -18px color-mix(in oklab, var(--primary) 55%, transparent);
 }
 .neon-hover-coral { transition: box-shadow .3s ease, transform .3s ease, border-color .3s ease; }
 .neon-hover-coral:hover, .neon-hover-coral:focus-within {
   transform: translateY(-2px);
-  border-color: color-mix(in oklab, var(--accent) 60%, transparent);
+  border-color: color-mix(in oklab, var(--accent) 70%, transparent);
   box-shadow:
-    0 0 0 1px color-mix(in oklab, var(--accent) 32%, transparent),
-    0 0 20px color-mix(in oklab, var(--accent) 32%, transparent),
-    0 18px 42px -18px color-mix(in oklab, var(--accent) 45%, transparent);
+    0 0 0 1px color-mix(in oklab, var(--accent) 40%, transparent),
+    0 0 28px color-mix(in oklab, var(--accent) 42%, transparent),
+    0 0 60px color-mix(in oklab, var(--accent) 28%, transparent),
+    0 18px 42px -18px color-mix(in oklab, var(--accent) 55%, transparent);
 }
 .neon-nav:hover, .neon-nav:focus-within {
-  border-color: color-mix(in oklab, var(--primary) 45%, transparent);
+  border-color: color-mix(in oklab, var(--primary) 55%, transparent);
   box-shadow:
-    0 0 0 1px color-mix(in oklab, var(--primary) 22%, transparent),
-    0 0 26px color-mix(in oklab, var(--primary) 26%, transparent),
+    0 0 0 1px color-mix(in oklab, var(--primary) 30%, transparent),
+    0 0 30px color-mix(in oklab, var(--primary) 38%, transparent),
+    0 0 70px color-mix(in oklab, var(--primary) 22%, transparent),
     0 8px 35px -12px var(--shadow-color);
 }
 @media (min-width: 640px) { .site-container { padding-inline: 32px; } .section-space { padding-block: 88px; } }
