@@ -27,6 +27,10 @@
  --input: oklch(0.66 0.03 272);
  --whatsapp: #25D366; --whatsapp-foreground: oklch(1 0 0);
  --shadow-color: oklch(0.205 0.04 279 / 0.1); --whatsapp-shadow: #25D36655;
+ --interaction-halo: color-mix(in oklab, var(--primary) 24%, transparent);
+ --interaction-edge: color-mix(in oklab, var(--primary) 42%, transparent);
+ --interaction-text-glow: color-mix(in oklab, var(--primary) 28%, transparent);
+ --interaction-shadow: 0 0 0 1px var(--interaction-edge), 0 0 18px var(--interaction-halo);
 }
 @layer base {
  * { border-color: var(--border); letter-spacing: 0; }
@@ -77,6 +81,45 @@ html[data-menu-open="true"] .floating-whatsapp { display: none; }
     0 0 30px color-mix(in oklab, var(--primary) 38%, transparent),
     0 0 70px color-mix(in oklab, var(--primary) 22%, transparent),
     0 8px 35px -12px var(--shadow-color);
+}
+/* Shared controls stay quieter than the larger card halos. */
+.neon-control {
+  transition: color .2s ease, background-color .2s ease, border-color .2s ease, box-shadow .2s ease;
+}
+.neon-control:focus-visible {
+  box-shadow: var(--interaction-shadow);
+  outline: 2px solid var(--primary);
+  outline-offset: 3px;
+}
+a:not(.neon-control) {
+  transition: color .2s ease, text-shadow .2s ease;
+}
+a:not(.neon-control):focus-visible {
+  color: var(--primary);
+  text-shadow: 0 0 12px var(--interaction-text-glow);
+  outline: 2px solid var(--primary);
+  outline-offset: 4px;
+  border-radius: 2px;
+}
+.neon-control svg, a:not(.neon-control) svg, .service-item svg {
+  transition: filter .2s ease;
+}
+.neon-control:focus-visible svg, a:focus-visible svg {
+  filter: drop-shadow(0 0 4px var(--interaction-edge));
+}
+.floating-whatsapp {
+  --interaction-halo: color-mix(in oklab, var(--whatsapp) 30%, transparent);
+  --interaction-edge: color-mix(in oklab, var(--whatsapp) 55%, transparent);
+}
+.floating-whatsapp:focus-visible { outline-color: var(--whatsapp); }
+@media (hover: hover) and (pointer: fine) {
+  .neon-control:not(:disabled):not([aria-disabled="true"]):hover { box-shadow: var(--interaction-shadow); }
+  a:not(.neon-control):hover { color: var(--primary); text-shadow: 0 0 12px var(--interaction-text-glow); }
+  .neon-control:not(:disabled):not([aria-disabled="true"]):hover svg,
+  a:not(.neon-control):hover svg,
+  .service-item:hover svg { filter: drop-shadow(0 0 4px var(--interaction-edge)); }
+  /* FAQ rows already have a card halo; avoid a second frame inside it. */
+  .neon-hover .neon-control:hover { box-shadow: none; }
 }
 @media (min-width: 640px) { .site-container { padding-inline: 32px; } .section-space { padding-block: 88px; } }
 @media (min-width: 1024px) { .site-container { padding-inline: 48px; } .section-space { padding-block: 96px; } .hero-note { display: flex; } }
