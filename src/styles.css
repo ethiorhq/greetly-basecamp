@@ -45,6 +45,36 @@
 .whatsapp-ring { animation: whatsapp-pulse 2.8s ease-out infinite; }
 html[data-menu-open="true"] .floating-whatsapp { display: none; }
 @keyframes whatsapp-pulse { 0% { transform: scale(1); opacity: .35; } 70%,100% { transform: scale(1.65); opacity: 0; } }
+
+/* Neon hover effects: cards, header nav and FAQ cards */
+.neon-hover, .neon-nav {
+  transition: box-shadow .3s ease, transform .3s ease, border-color .3s ease;
+  will-change: transform;
+}
+.neon-hover:hover, .neon-hover:focus-within {
+  transform: translateY(-2px);
+  border-color: color-mix(in oklab, var(--primary) 55%, transparent);
+  box-shadow:
+    0 0 0 1px color-mix(in oklab, var(--primary) 30%, transparent),
+    0 0 20px color-mix(in oklab, var(--primary) 28%, transparent),
+    0 18px 42px -18px color-mix(in oklab, var(--primary) 45%, transparent);
+}
+.neon-hover-coral { transition: box-shadow .3s ease, transform .3s ease, border-color .3s ease; }
+.neon-hover-coral:hover, .neon-hover-coral:focus-within {
+  transform: translateY(-2px);
+  border-color: color-mix(in oklab, var(--accent) 60%, transparent);
+  box-shadow:
+    0 0 0 1px color-mix(in oklab, var(--accent) 32%, transparent),
+    0 0 20px color-mix(in oklab, var(--accent) 32%, transparent),
+    0 18px 42px -18px color-mix(in oklab, var(--accent) 45%, transparent);
+}
+.neon-nav:hover, .neon-nav:focus-within {
+  border-color: color-mix(in oklab, var(--primary) 45%, transparent);
+  box-shadow:
+    0 0 0 1px color-mix(in oklab, var(--primary) 22%, transparent),
+    0 0 26px color-mix(in oklab, var(--primary) 26%, transparent),
+    0 8px 35px -12px var(--shadow-color);
+}
 @media (min-width: 640px) { .site-container { padding-inline: 32px; } .section-space { padding-block: 88px; } }
 @media (min-width: 1024px) { .site-container { padding-inline: 48px; } .section-space { padding-block: 96px; } .hero-note { display: flex; } }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation: none !important; transition: none !important; } }
