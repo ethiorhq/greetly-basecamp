@@ -8,3 +8,8 @@
 # Option B recolor
 - [x] Apply cool white / indigo / coral palette and Plus Jakarta Sans headings.
 - [x] Verify tests, pages and contact flow.
+
+# Cursor effect
+- [ ] Approve the indigo/coral cursor-effect plan.
+- [ ] Add the shared flowing trail and motion/performance safeguards.
+- [ ] Verify appearance, interaction, accessibility and existing contact flow.
