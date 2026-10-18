@@ -92,7 +92,7 @@ export function createCursorTrailRenderer(canvas: HTMLCanvasElement) {
         ctx.quadraticCurveTo(p.x, p.y, (p.x + next.x) / 2, (p.y + next.y) / 2);
       }
       ctx.lineTo(s.x, s.y);
-      const fade = Math.sin(Math.PI * Math.min(1, progress * 3)) * (1 - progress);
+      const fade = Math.sin(Math.PI * Math.min(.5, progress * 6)) * (1 - progress);
       // Soft outer ink and a fine filament remain readable on a light canvas.
       ctx.strokeStyle = s.color;
       ctx.globalAlpha = .045 * fade;

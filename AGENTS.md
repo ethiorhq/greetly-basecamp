@@ -14,3 +14,4 @@
 - Contact submission prepares an external WhatsApp draft client-side without persisting inquiries; preserve entered data and a fallback draft link.
 - Keep legal pages aligned to the actual contact flow and review their drafts before publishing.
 - Share interactive glow styling through the Button base class and global link rules, using semantic CSS tokens, so home and legal controls stay consistent without changing destinations.
+- Mount CursorTrail once in the root; dynamically load its Canvas2D fallback after pointer/motion checks, read palette tokens, and fully stop/clean up when idle or ineligible so decoration never interferes with content or contact editing. Reviewed fluid engines lack the required teardown controls.

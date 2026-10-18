@@ -10,6 +10,6 @@
 - [x] Verify tests, pages and contact flow.
 
 # Cursor effect
-- [ ] Approve the indigo/coral cursor-effect plan.
-- [ ] Add the shared flowing trail and motion/performance safeguards.
+- [x] Approve the indigo/coral cursor-effect plan.
+- [x] Add the shared flowing trail and motion/performance safeguards.
 - [ ] Verify appearance, interaction, accessibility and existing contact flow.
