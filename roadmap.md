@@ -12,4 +12,4 @@
 # Cursor effect
 - [x] Approve the indigo/coral cursor-effect plan.
 - [x] Add the shared flowing trail and motion/performance safeguards.
-- [ ] Verify appearance, interaction, accessibility and existing contact flow.
+- [x] Verify appearance, interaction, accessibility and existing contact flow.
