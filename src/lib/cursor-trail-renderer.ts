@@ -14,6 +14,7 @@ export function createCursorTrailRenderer(canvas: HTMLCanvasElement) {
   let previous: Point | null = null;
   let pending: Point | null = null;
   let sequence = 0;
+  let lastMove = 0;
   let primary = '';
   let accent = '';
 
@@ -35,6 +36,7 @@ export function createCursorTrailRenderer(canvas: HTMLCanvasElement) {
     previous = null;
     pending = null;
     lastTime = 0;
+    lastMove = 0;
     ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
     canvas.dataset.active = 'false';
   }
@@ -107,7 +109,6 @@ export function createCursorTrailRenderer(canvas: HTMLCanvasElement) {
       canvas.dataset.active = 'true';
       frame = requestAnimationFrame(tick);
     } else {
-      previous = null;
       lastTime = 0;
       canvas.dataset.active = 'false';
     }
@@ -118,6 +119,9 @@ export function createCursorTrailRenderer(canvas: HTMLCanvasElement) {
     resize,
     clear,
     move(x: number, y: number) {
+      const now = performance.now();
+      if (now - lastMove > 150) previous = null;
+      lastMove = now;
       pending = { x, y };
       if (!frame) frame = requestAnimationFrame(tick);
     },
