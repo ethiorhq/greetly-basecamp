@@ -5,8 +5,9 @@ export function CursorTrail() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
+    const element = canvasRef.current;
+    if (!element) return;
+    const canvas: HTMLCanvasElement = element;
     const pointer = matchMedia('(hover: hover) and (pointer: fine)');
     const motion = matchMedia('(prefers-reduced-motion: reduce)');
     let disposed = false;
